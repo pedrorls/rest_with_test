@@ -37,8 +37,8 @@ class ViewTestCase(TestCase):
 
     def test_authorization_is_enforced(self):
         new_client = APIClient()
-        res = new_client.get('/bucketlist/', kwargs={'pk': 3}, format='json')
-        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+        res = new_client.get('/bucketlists/', kwargs={'pk': 3}, format='json')
+        self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_api_can_get_a_bucketlist(self):
         bucketlist = Bucketlist.objects.get(id=1)
